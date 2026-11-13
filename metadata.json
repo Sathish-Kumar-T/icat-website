@@ -1,0 +1,6 @@
+{
+  "name": "ICAT College of Design and Media",
+  "description": "Studio-first education in animation, VFX, games, design and media across Chennai, Bengaluru and Hyderabad since 2004.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
