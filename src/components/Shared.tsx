@@ -1,28 +1,67 @@
-import { useId, useState, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 export function MediaPlaceholder({
   portrait = false,
   src,
+  videoSrc,
+  videoControls = false,
   alt = '',
   priority = false,
 }: {
   portrait?: boolean;
   src?: string;
+  videoSrc?: string;
+  videoControls?: boolean;
   alt?: string;
   priority?: boolean;
 }) {
+  const hasMedia = Boolean(src || videoSrc);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const didAttemptAutoplay = useRef(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoSrc) return;
+    didAttemptAutoplay.current = false;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, [videoSrc]);
+
   return (
     <div
-      className={`media-placeholder${portrait ? ' portrait' : ''}${src ? ' has-image' : ''}`}
-      aria-hidden={src ? undefined : true}
+      className={`media-placeholder${portrait ? ' portrait' : ''}${hasMedia ? ' has-image' : ''}`}
+      aria-hidden={hasMedia ? undefined : true}
     >
-      {src ? (
+      {videoSrc ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls={videoControls}
+          preload="metadata"
+          aria-label={alt || 'ICAT showcase video'}
+          onCanPlay={(e) => {
+            if (didAttemptAutoplay.current) return;
+            didAttemptAutoplay.current = true;
+            const video = e.currentTarget;
+            if (video.paused) {
+              video.play().catch(() => {});
+            }
+          }}
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      ) : src ? (
         <img
           src={src}
           alt={alt}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
+          referrerPolicy="no-referrer"
           fetchPriority={priority ? 'high' : undefined}
         />
       ) : (

@@ -15,8 +15,18 @@ import {
   QUALIFICATIONS,
   getProgrammesByLevel,
   isQualification,
+  type CampusId,
   type QualificationId,
 } from '../data/programmes';
+import {
+  ALUMNI_MEDIA,
+  CAMPUS_MEDIA,
+  EVENT_MEDIA,
+  NEWS_MEDIA,
+  PROGRAMME_MEDIA,
+  SECTION_MEDIA,
+  WORK_MEDIA,
+} from '../data/media';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -147,6 +157,7 @@ const FAQS: [string, string][] = [
 
 export function HomePage() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   const { lang } = useLanguage();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [alumniSlide, setAlumniSlide] = useState(0);
@@ -163,6 +174,14 @@ export function HomePage() {
     next.delete('campus');
     setSearchParams(next);
   };
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (location.hash) {
@@ -219,14 +238,25 @@ export function HomePage() {
       <Navbar />
       <main>
         <section className="hero">
-          <img
+          <video
+            ref={heroVideoRef}
             className="hero-background"
-            src="/assets/icat-hero-main.jpg"
-            alt="ICAT graduates gathered for their graduation ceremony"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            onCanPlay={(e) => {
+              const video = e.currentTarget;
+              video.muted = true;
+              if (video.paused) {
+                video.play().catch(() => {});
+              }
+            }}
+          >
+            <source src="/assets/icat-hero-main.mp4" type="video/mp4" />
+          </video>
           <div className="container hero-inner">
             <div className="hero-copy">
               <AdmissionsBadge>
@@ -281,7 +311,11 @@ export function HomePage() {
             <ActionButton href="#about">About ICAT</ActionButton>
           </div>
           <div className="reveal">
-            <MediaPlaceholder />
+            <MediaPlaceholder
+              videoSrc="/assets/icat-about.mp4"
+              videoControls
+              alt="ICAT studio-first design education showcase"
+            />
           </div>
         </section>
 
@@ -329,7 +363,10 @@ export function HomePage() {
           <div className="card-grid stagger-grid programmes-card-grid">
             {programmes.map((prog) => (
               <article className="media-card" key={prog.slug}>
-                <MediaPlaceholder />
+                <MediaPlaceholder
+                  src={PROGRAMME_MEDIA[prog.slug]}
+                  alt={`${prog.title} creative portfolio artwork`}
+                />
                 <h3>{prog.title}</h3>
                 <p>{prog.description}</p>
                 <Link to={`/programs/${prog.slug}?level=${level}`}>Explore</Link>
@@ -357,9 +394,9 @@ export function HomePage() {
                   "ICAT's annual intercollegiate festival: design, media and cultural competitions, screenings and performances across Chennai, Bengaluru and Hyderabad.",
                 ],
               ] as const
-            ).map(([title, copy]) => (
+            ).map(([title, copy], idx) => (
               <article className="event-card" key={title}>
-                <MediaPlaceholder />
+                <MediaPlaceholder src={EVENT_MEDIA[idx]} alt={`${title} at ICAT`} />
                 <div>
                   <h3>{title}</h3>
                   <p>{copy}</p>
@@ -379,7 +416,10 @@ export function HomePage() {
           <div className="card-grid three stagger-grid">
             {CAMPUSES_LIST.map((campus) => (
               <article className="media-card" key={campus.title}>
-                <MediaPlaceholder />
+                <MediaPlaceholder
+                  src={CAMPUS_MEDIA[campus.title.toLowerCase() as CampusId]}
+                  alt={`ICAT ${campus.title} campus`}
+                />
                 <h3>{campus.title}</h3>
                 <p>{campus.copy}</p>
                 <a href="#footer">View campus</a>
@@ -395,9 +435,13 @@ export function HomePage() {
             copy="Alumni work on projects ranging from Hollywood and Indian blockbusters to new-age games, at studios, product companies and consultancies in India and overseas."
           />
           <div className="alumni-grid stagger-grid">
-            {ALUMNI.map(([name, role]) => (
+            {ALUMNI.map(([name, role], idx) => (
               <article key={name}>
-                <MediaPlaceholder portrait />
+                <MediaPlaceholder
+                  portrait
+                  src={ALUMNI_MEDIA[idx]}
+                  alt={`${name}, ${role}`}
+                />
                 <h3>{name}</h3>
                 <p>{role}</p>
               </article>
@@ -460,9 +504,9 @@ export function HomePage() {
           />
           <ActionButton href="#works">Browse student works</ActionButton>
           <div className="work-grid stagger-grid">
-            {WORKS.map((work) => (
+            {WORKS.map((work, idx) => (
               <article key={work}>
-                <MediaPlaceholder />
+                <MediaPlaceholder src={WORK_MEDIA[idx]} alt={work} />
                 <h3>{work}</h3>
               </article>
             ))}
@@ -471,7 +515,10 @@ export function HomePage() {
 
         <section className="section split-section container" id="campus-life">
           <div className="reveal">
-            <MediaPlaceholder />
+            <MediaPlaceholder
+              src={SECTION_MEDIA.campusLife}
+              alt="ICAT studio workstations and collaborative cohort space"
+            />
           </div>
           <div className="reveal">
             <span className="eyebrow">Campus life</span>
@@ -525,7 +572,7 @@ export function HomePage() {
           <div className="card-grid stagger-grid">
             {NEWS.map((item, idx) => (
               <article className="media-card news-card" key={item.title}>
-                <MediaPlaceholder />
+                <MediaPlaceholder src={NEWS_MEDIA[idx]} alt={item.title} />
                 <span>
                   {['Showcase', 'Festival', 'Expo', 'Expo', 'Campus', 'Achievement'][idx]}
                 </span>
@@ -625,7 +672,10 @@ export function HomePage() {
             </div>
           </div>
           <div className="reveal">
-            <MediaPlaceholder />
+            <MediaPlaceholder
+              src={SECTION_MEDIA.finalCta}
+              alt="ICAT graduate showcase creative portfolio gallery"
+            />
           </div>
         </section>
       </main>

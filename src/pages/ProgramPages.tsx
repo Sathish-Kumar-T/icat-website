@@ -16,6 +16,12 @@ import {
   type ProgrammeSummary,
   type QualificationId,
 } from '../data/programmes';
+import {
+  CAMPUS_MEDIA,
+  PROGRAMME_MEDIA,
+  SECTION_MEDIA,
+  getProgrammeWorkMedia,
+} from '../data/media';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -418,7 +424,11 @@ export function ProgramOverviewPage() {
                   <ActionButton href="#enquire">Download brochure</ActionButton>
                 </div>
               </div>
-              <MediaPlaceholder />
+              <MediaPlaceholder
+                src={PROGRAMME_MEDIA[detail.slug]}
+                alt={`${detail.title} portfolio showcase`}
+                priority
+              />
             </section>
 
             <section className="program-intro container reveal">
@@ -475,7 +485,10 @@ export function ProgramOverviewPage() {
                       className={`media-card campus-option${available ? '' : ' unavailable'}`}
                       aria-disabled={!available}
                     >
-                      <MediaPlaceholder />
+                      <MediaPlaceholder
+                        src={CAMPUS_MEDIA[key]}
+                        alt={`ICAT ${info.label} campus`}
+                      />
                       <h3>{info.label}</h3>
                       <p>
                         {available ? info.address : `${offering.title} is not offered at this campus.`}
@@ -536,9 +549,12 @@ export function ProgramOverviewPage() {
                 copy={`A selection of the projects that shape an ICAT ${detail.title} portfolio.`}
               />
               <div className="program-work-grid stagger-grid">
-                {detail.works.map((work) => (
+                {detail.works.map((work, idx) => (
                   <article key={work}>
-                    <MediaPlaceholder />
+                    <MediaPlaceholder
+                      src={getProgrammeWorkMedia(detail.slug, idx)}
+                      alt={`${detail.title}: ${work}`}
+                    />
                     <h3>{work}</h3>
                   </article>
                 ))}
@@ -679,7 +695,11 @@ export function ProgramCampusPage() {
               <ActionButton href="#enquire">Download brochure</ActionButton>
             </div>
           </div>
-          <MediaPlaceholder />
+          <MediaPlaceholder
+            src={PROGRAMME_MEDIA[detail.slug]}
+            alt={`${detail.title} studio showcase in ${cityLabel}`}
+            priority
+          />
         </section>
 
         <section className="course-facts container stagger-grid">
@@ -802,7 +822,10 @@ export function ProgramCampusPage() {
 
         <section className="split-section container" id="facilities">
           <div className="reveal">
-            <MediaPlaceholder />
+            <MediaPlaceholder
+              src={SECTION_MEDIA.facilities}
+              alt={`ICAT ${cityLabel} studios and production labs`}
+            />
           </div>
           <div className="reveal">
             <span className="eyebrow">Studios and tools</span>
