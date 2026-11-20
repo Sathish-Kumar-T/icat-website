@@ -36,20 +36,30 @@ import newsVideoEditing from '../assets/images/news_video_editing_1794813897006.
 import studioFacilitiesLab from '../assets/images/studio_facilities_lab_1794813898154.jpg';
 import finalCtaPortfolio from '../assets/images/final_cta_portfolio_1794813896758.jpg';
 
+const DEV_MEDIA_VERSION = '20261120';
+
+function withMediaVersion(src: string): string {
+  if (!import.meta.env.DEV || !src || src.startsWith('data:')) {
+    return src;
+  }
+  const separator = src.includes('?') ? '&' : '?';
+  return `${src}${separator}v=${DEV_MEDIA_VERSION}`;
+}
+
 export const PROGRAMME_MEDIA: Record<string, string> = {
-  animation: disciplineAnimationArt,
-  'fashion-design': disciplineFashionArt,
-  'game-art-and-design': disciplineGameArt,
-  'game-design-and-development': disciplineGameDesign,
-  'game-programming': disciplineGameProg,
-  'graphic-design': disciplineGraphicArt,
-  'interior-design': disciplineInteriorArt,
-  'multimedia-and-media-technology': disciplineMultimediaArt,
-  photography: disciplinePhotoArt,
-  'ui-ux-design': disciplineUiUxArt,
-  'visual-effects': disciplineVfxArt,
-  'visual-media': disciplineVisualMedia,
-  'game-technology': disciplineGameTech,
+  animation: withMediaVersion(disciplineAnimationArt),
+  'fashion-design': withMediaVersion(disciplineFashionArt),
+  'game-art-and-design': withMediaVersion(disciplineGameArt),
+  'game-design-and-development': withMediaVersion(disciplineGameDesign),
+  'game-programming': withMediaVersion(disciplineGameProg),
+  'graphic-design': withMediaVersion(disciplineGraphicArt),
+  'interior-design': withMediaVersion(disciplineInteriorArt),
+  'multimedia-and-media-technology': withMediaVersion(disciplineMultimediaArt),
+  photography: withMediaVersion(disciplinePhotoArt),
+  'ui-ux-design': withMediaVersion(disciplineUiUxArt),
+  'visual-effects': withMediaVersion(disciplineVfxArt),
+  'visual-media': withMediaVersion(disciplineVisualMedia),
+  'game-technology': withMediaVersion(disciplineGameTech),
 };
 
 export const CAMPUS_MEDIA: Record<CampusId, string> = {
@@ -105,7 +115,7 @@ const PROGRAMME_WORK_GALLERIES: Record<string, string[]> = {
 export function getProgrammeWorkMedia(slug: string, index: number): string {
   const gallery = PROGRAMME_WORK_GALLERIES[slug];
   if (gallery && gallery.length > 0) {
-    return gallery[index % gallery.length];
+    return withMediaVersion(gallery[index % gallery.length]);
   }
-  return PROGRAMME_MEDIA[slug] ?? WORK_MEDIA[index % WORK_MEDIA.length];
+  return withMediaVersion(PROGRAMME_MEDIA[slug] ?? WORK_MEDIA[index % WORK_MEDIA.length]);
 }
