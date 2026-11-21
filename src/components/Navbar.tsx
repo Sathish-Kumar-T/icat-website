@@ -300,6 +300,7 @@ export function Navbar() {
 
   return (
     <>
+      {false && (
       <div className="icat-top-alert" role="region" aria-label="Admissions announcement">
         <Link className="icat-top-alert-link" to="/#apply">
           <span className="icat-top-alert-dot" aria-hidden="true" />
@@ -376,6 +377,7 @@ export function Navbar() {
           </div>
         </div>
       </div>
+      )}
       <header
         className={`icat-navbar${activeMenu ? ' dropdown-open' : ''}`}
         onMouseLeave={() => setActiveMenu(null)}
