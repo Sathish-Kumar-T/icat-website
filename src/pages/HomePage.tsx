@@ -20,13 +20,21 @@ import {
 } from '../data/programmes';
 import {
   ALUMNI_MEDIA,
-  CAMPUS_MEDIA,
   EVENT_MEDIA,
   NEWS_MEDIA,
   PROGRAMME_MEDIA,
   SECTION_MEDIA,
   WORK_MEDIA,
 } from '../data/media';
+import chennaiCampusImg from '../assets/images/Chennai-campus.png';
+import bengaluruCampusImg from '../assets/images/Bengaluru-campus.png';
+import hyderabadCampusImg from '../assets/images/Hyderabad-campus.png';
+
+const HOME_CAMPUS_MEDIA: Record<CampusId, string> = {
+  chennai: chennaiCampusImg,
+  bengaluru: bengaluruCampusImg,
+  hyderabad: hyderabadCampusImg,
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -417,7 +425,7 @@ export function HomePage() {
             {CAMPUSES_LIST.map((campus) => (
               <article className="media-card" key={campus.title}>
                 <MediaPlaceholder
-                  src={CAMPUS_MEDIA[campus.title.toLowerCase() as CampusId]}
+                  src={HOME_CAMPUS_MEDIA[campus.title.toLowerCase() as CampusId]}
                   alt={`ICAT ${campus.title} campus`}
                 />
                 <h3>{campus.title}</h3>

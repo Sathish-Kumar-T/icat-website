@@ -40,7 +40,7 @@ import facilityGreenScreenStage from '../assets/images/facility_green_screen_sta
 import facilityDesignAtelier from '../assets/images/facility_design_atelier_1795239105870.jpg';
 import facilityScreeningCritique from '../assets/images/facility_screening_critique_1795239105328.jpg';
 
-const DEV_MEDIA_VERSION = '20261120';
+const DEV_MEDIA_VERSION = String(Date.now());
 
 function withMediaVersion(src: string): string {
   if (!import.meta.env.DEV || !src || src.startsWith('data:')) {
@@ -67,37 +67,45 @@ export const PROGRAMME_MEDIA: Record<string, string> = {
 };
 
 export const CAMPUS_MEDIA: Record<CampusId, string> = {
-  chennai: '/assets/d94b1.png',
-  bengaluru: '/assets/1b87a.png',
-  hyderabad: '/assets/e47f5.png',
+  chennai: withMediaVersion('/assets/d94b1.png'),
+  bengaluru: withMediaVersion('/assets/1b87a.png'),
+  hyderabad: withMediaVersion('/assets/e47f5.png'),
 };
 
-export const EVENT_MEDIA: string[] = [eventGraduateShowcase, eventMirakiFestival];
+export const EVENT_MEDIA: string[] = [
+  withMediaVersion(eventGraduateShowcase),
+  withMediaVersion(eventMirakiFestival),
+];
 
-export const ALUMNI_MEDIA: string[] = [alumniOne, alumniTwo, alumniThree, alumniFour];
+export const ALUMNI_MEDIA: string[] = [
+  withMediaVersion(alumniOne),
+  withMediaVersion(alumniTwo),
+  withMediaVersion(alumniThree),
+  withMediaVersion(alumniFour),
+];
 
 export const WORK_MEDIA: string[] = [
-  workAnimationReel,
-  workVfxBreakdown,
-  workGameEnvironment,
-  workBrandIdentity,
-  workInteriorProject,
-  workFashionCollection,
+  withMediaVersion(workAnimationReel),
+  withMediaVersion(workVfxBreakdown),
+  withMediaVersion(workGameEnvironment),
+  withMediaVersion(workBrandIdentity),
+  withMediaVersion(workInteriorProject),
+  withMediaVersion(workFashionCollection),
 ];
 
 export const NEWS_MEDIA: string[] = [
-  '/assets/icat-hero-main.jpg',
-  eventMirakiFestival,
-  newsAnimationExpo,
-  newsFashionExpo,
-  newsKampusFestival,
-  newsVideoEditing,
+  withMediaVersion('/assets/icat-hero-main.jpg'),
+  withMediaVersion(eventMirakiFestival),
+  withMediaVersion(newsAnimationExpo),
+  withMediaVersion(newsFashionExpo),
+  withMediaVersion(newsKampusFestival),
+  withMediaVersion(newsVideoEditing),
 ];
 
 export const SECTION_MEDIA = {
-  campusLife: campusStudioLife,
-  facilities: studioFacilitiesLab,
-  finalCta: finalCtaPortfolio,
+  campusLife: withMediaVersion(campusStudioLife),
+  facilities: withMediaVersion(studioFacilitiesLab),
+  finalCta: withMediaVersion(finalCtaPortfolio),
 } as const;
 
 export interface FacilityGallerySlide {
