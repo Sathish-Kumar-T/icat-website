@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../components/Navbar';
+import { FacilityGallery } from '../components/FacilityGallery';
 import { ActionButton, FooterLinkGroup, MediaPlaceholder, SectionHeading } from '../components/Shared';
 import {
   CAMPUSES,
@@ -19,7 +20,7 @@ import {
 import {
   CAMPUS_MEDIA,
   PROGRAMME_MEDIA,
-  SECTION_MEDIA,
+  getCampusFacilityGallery,
   getProgrammeWorkMedia,
 } from '../data/media';
 
@@ -820,27 +821,12 @@ export function ProgramCampusPage() {
           </div>
         </section>
 
-        <section className="split-section container" id="facilities">
-          <div className="reveal">
-            <MediaPlaceholder
-              src={SECTION_MEDIA.facilities}
-              alt={`ICAT ${cityLabel} studios and production labs`}
-            />
-          </div>
-          <div className="reveal">
-            <span className="eyebrow">Studios and tools</span>
-            <h2>Professional workflows from the first project</h2>
-            <p>
-              Specialist production spaces support individual and team briefs. Tools change with the
-              industry; strong creative process remains central.
-            </p>
-            <div className="tool-tags">
-              {detail.tools.map((tool) => (
-                <span key={tool}>{tool}</span>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FacilityGallery
+          campusLabel={cityLabel}
+          programmeTitle={detail.title}
+          tools={detail.tools}
+          slides={getCampusFacilityGallery(campusInfo.id, cityLabel, detail.slug, detail.title)}
+        />
 
         <section className="section container" id="careers">
           <SectionHeading

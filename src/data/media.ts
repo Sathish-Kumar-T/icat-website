@@ -35,6 +35,10 @@ import newsKampusFestival from '../assets/images/news_kampus_festival_1794813894
 import newsVideoEditing from '../assets/images/news_video_editing_1794813897006.jpg';
 import studioFacilitiesLab from '../assets/images/studio_facilities_lab_1794813898154.jpg';
 import finalCtaPortfolio from '../assets/images/final_cta_portfolio_1794813896758.jpg';
+import facilityProductionLab from '../assets/images/facility_production_lab_1795239104568.jpg';
+import facilityGreenScreenStage from '../assets/images/facility_green_screen_stage_1795239105189.jpg';
+import facilityDesignAtelier from '../assets/images/facility_design_atelier_1795239105870.jpg';
+import facilityScreeningCritique from '../assets/images/facility_screening_critique_1795239105328.jpg';
 
 const DEV_MEDIA_VERSION = '20261120';
 
@@ -95,6 +99,90 @@ export const SECTION_MEDIA = {
   facilities: studioFacilitiesLab,
   finalCta: finalCtaPortfolio,
 } as const;
+
+export interface FacilityGallerySlide {
+  id: string;
+  title: string;
+  shortLabel: string;
+  category: string;
+  caption: string;
+  src: string;
+  alt: string;
+}
+
+const DESIGN_ATELIER_FIRST = new Set([
+  'fashion-design',
+  'interior-design',
+  'graphic-design',
+  'ui-ux-design',
+]);
+
+const STAGE_FIRST = new Set(['photography', 'visual-effects', 'visual-media']);
+
+export function getCampusFacilityGallery(
+  campusId: CampusId,
+  campusLabel: string,
+  programmeSlug: string,
+  programmeTitle: string
+): FacilityGallerySlide[] {
+  const productionLab: FacilityGallerySlide = {
+    id: 'production-lab',
+    title: 'Production & Workstation Lab',
+    shortLabel: 'Workstation Lab',
+    category: 'Digital Production',
+    caption: `Calibrated dual-display workstations and pen displays configured for ${programmeTitle.toLowerCase()} pipelines and daily studio critiques.`,
+    src: withMediaVersion(facilityProductionLab),
+    alt: `${campusLabel} campus production and workstation lab with dual monitors and pen displays`,
+  };
+
+  const captureStage: FacilityGallerySlide = {
+    id: 'capture-stage',
+    title: 'Cyclorama & Capture Stage',
+    shortLabel: 'Capture Stage',
+    category: 'Stage & Lighting',
+    caption: `Overhead cinema lighting grid, seamless cyclorama wall and camera rigs for live-action shoots, lighting studies and VFX plates.`,
+    src: withMediaVersion(facilityGreenScreenStage),
+    alt: `${campusLabel} campus cyclorama production stage with cinema lighting rig and camera setup`,
+  };
+
+  const designAtelier: FacilityGallerySlide = {
+    id: 'design-atelier',
+    title: 'Design & Prototyping Atelier',
+    shortLabel: 'Design Atelier',
+    category: 'Craft & Materials',
+    caption: `Daylit drafting tables, scale modelling bays, material libraries and pin-up walls built for iterative ${programmeTitle.toLowerCase()} exploration.`,
+    src: withMediaVersion(facilityDesignAtelier),
+    alt: `${campusLabel} campus design atelier with drafting tables, material swatches and critique wall`,
+  };
+
+  const screeningRoom: FacilityGallerySlide = {
+    id: 'screening-theatre',
+    title: 'Screening & Critique Theatre',
+    shortLabel: 'Critique Theatre',
+    category: 'Review & Showcase',
+    caption: `Acoustically treated tiered screening space used for reel reviews, industry masterclasses and Graduate Showcase presentations.`,
+    src: withMediaVersion(facilityScreeningCritique),
+    alt: `${campusLabel} campus screening room and portfolio critique theatre`,
+  };
+
+  const campusSpace: FacilityGallerySlide = {
+    id: 'campus-studio-grounds',
+    title: `ICAT ${campusLabel} Campus`,
+    shortLabel: `${campusLabel} Campus`,
+    category: 'Campus Environment',
+    caption: `Dedicated studio floors, collaborative cohort areas and open-access labs supporting full-time ${programmeTitle.toLowerCase()} batches in ${campusLabel}.`,
+    src: CAMPUS_MEDIA[campusId],
+    alt: `ICAT ${campusLabel} campus building and studio environment`,
+  };
+
+  if (DESIGN_ATELIER_FIRST.has(programmeSlug)) {
+    return [designAtelier, productionLab, captureStage, screeningRoom, campusSpace];
+  }
+  if (STAGE_FIRST.has(programmeSlug)) {
+    return [captureStage, productionLab, screeningRoom, designAtelier, campusSpace];
+  }
+  return [productionLab, captureStage, designAtelier, screeningRoom, campusSpace];
+}
 
 const PROGRAMME_WORK_GALLERIES: Record<string, string[]> = {
   animation: [workAnimationReel, newsAnimationExpo, campusStudioLife],
