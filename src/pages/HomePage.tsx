@@ -33,6 +33,18 @@ import {
 import chennaiCampusImg from '../assets/images/Chennai-campus.png';
 import bengaluruCampusImg from '../assets/images/Bengaluru-campus.png';
 import hyderabadCampusImg from '../assets/images/Hyderabad-campus.png';
+import whyIcon01 from '../assets/images/icat-why-section-icons-svg/01-industry-led-guest-lectures.svg';
+import whyIcon02 from '../assets/images/icat-why-section-icons-svg/02-expert-faculty.svg';
+import whyIcon03 from '../assets/images/icat-why-section-icons-svg/03-portfolio-focused-learning.svg';
+import whyIcon04 from '../assets/images/icat-why-section-icons-svg/04-real-world-projects.svg';
+import whyIcon05 from '../assets/images/icat-why-section-icons-svg/05-workshops-and-masterclasses.svg';
+import whyIcon06 from '../assets/images/icat-why-section-icons-svg/06-world-class-labs-and-studios.svg';
+import careerIcon01 from '../assets/images/icat-careers-section-icons-svg/01-animation-and-film-studios.svg';
+import careerIcon02 from '../assets/images/icat-careers-section-icons-svg/02-visual-effects-and-post-production.svg';
+import careerIcon03 from '../assets/images/icat-careers-section-icons-svg/03-games-and-interactive-entertainment.svg';
+import careerIcon04 from '../assets/images/icat-careers-section-icons-svg/04-digital-and-social-media.svg';
+import careerIcon05 from '../assets/images/icat-careers-section-icons-svg/05-e-commerce-and-product-companies.svg';
+import careerIcon06 from '../assets/images/icat-careers-section-icons-svg/06-it-consulting-and-corporate-design.svg';
 
 const HOME_CAMPUS_MEDIA: Record<CampusId, string> = {
   chennai: chennaiCampusImg,
@@ -44,26 +56,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FEATURES = [
   {
+    icon: whyIcon01,
     title: 'Industry-led guest lectures',
     copy: 'Working professionals from studios, agencies and production houses take sessions through the year.',
   },
   {
+    icon: whyIcon02,
     title: 'Expert faculty',
     copy: 'Teachers who work in the craft they teach, and bring current projects into the classroom.',
   },
   {
+    icon: whyIcon03,
     title: 'Portfolio-focused learning',
     copy: 'Every semester produces work that goes into the portfolio recruiters review at the Graduate Showcase.',
   },
   {
+    icon: whyIcon04,
     title: 'Real-world projects',
     copy: 'Students work on live briefs from studios and clients, not only classroom exercises.',
   },
   {
+    icon: whyIcon05,
     title: 'Workshops and masterclasses',
     copy: 'Intensive sessions beyond the syllabus, from software deep-dives to portfolio reviews.',
   },
   {
+    icon: whyIcon06,
     title: 'World-class labs and studios',
     copy: 'Animation, VFX, game, fashion, interior and photography studios across the campuses.',
   },
@@ -92,12 +110,12 @@ const ALUMNI_SLIDES = Array.from(
 );
 
 const CAREERS = [
-  'Animation and film studios',
-  'Visual effects and post-production',
-  'Games and interactive entertainment',
-  'Digital and social media',
-  'E-commerce and product companies',
-  'IT, consulting and corporate design',
+  { icon: careerIcon01, title: 'Animation and film studios' },
+  { icon: careerIcon02, title: 'Visual effects and post-production' },
+  { icon: careerIcon03, title: 'Games and interactive entertainment' },
+  { icon: careerIcon04, title: 'Digital and social media' },
+  { icon: careerIcon05, title: 'E-commerce and product companies' },
+  { icon: careerIcon06, title: 'IT, consulting and corporate design' },
 ];
 
 const WORKS = [
@@ -338,9 +356,16 @@ export function HomePage() {
             copy="What sits behind every ICAT portfolio: practitioner faculty, live briefs, studio-grade facilities, and a placement team working the same 800+ partner list year after year."
           />
           <div className="feature-grid stagger-grid">
-            {FEATURES.map((item, idx) => (
+            {FEATURES.map((item) => (
               <article className="feature" key={item.title}>
-                <span className="icon-tile">{String(idx + 1).padStart(2, '0')}</span>
+                <span className="icon-tile">
+                  <img
+                    src={item.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-9 w-9 object-contain"
+                  />
+                </span>
                 <h3>{item.title}</h3>
                 <p>{item.copy}</p>
               </article>
@@ -500,18 +525,60 @@ export function HomePage() {
               Profiles and testimonials from graduates across animation, visual effects, games,
               design, fashion and interiors.
             </p>
-            <ActionButton href="#alumni">Read alumni stories</ActionButton>
+            <ActionButton href="#alumni-testimonials">Read alumni stories</ActionButton>
           </div>
-          <div className="quotes mt-12 reveal">
-            {alumniTestimonials.map((testimonial) => (
-              <blockquote key={testimonial.name}>
-                <p>{testimonial.quote}</p>
-                <footer>
-                  <b>{testimonial.name}</b>
-                  <span>{testimonial.program}</span>
-                </footer>
-              </blockquote>
-            ))}
+        </section>
+
+        <section className="section container hidden" id="alumni-testimonials" hidden>
+          <SectionHeading
+            eyebrow="Alumni testimonials"
+            title="In our graduates’ own words"
+            copy="Hear from ICAT alumni about how studio-first training and portfolio mentorship shaped their careers across leading studios and creative agencies."
+          />
+          <div className="stagger-grid grid grid-cols-1 gap-6 md:grid-cols-2">
+            {alumniTestimonials.map((testimonial) => {
+              const initials = testimonial.name
+                .split(' ')
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((part) => part[0]?.toUpperCase() ?? '')
+                .join('');
+
+              return (
+                <blockquote
+                  key={testimonial.name}
+                  className="m-0 flex flex-col justify-between gap-6 rounded-xl border border-icat-border bg-icat-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-icat-accent hover:shadow-[0_14px_34px_rgba(16,43,92,0.09)] sm:p-8"
+                >
+                  <div>
+                    <span
+                      aria-hidden="true"
+                      className="mb-3 block text-3xl leading-none font-semibold text-icat-primary"
+                    >
+                      &ldquo;
+                    </span>
+                    <p className="m-0 text-[16px] leading-[1.65] text-icat-text">
+                      {testimonial.quote}
+                    </p>
+                  </div>
+                  <footer className="flex items-center gap-3.5 border-t border-icat-border pt-5">
+                    <span
+                      aria-hidden="true"
+                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-icat-light text-xs font-semibold tracking-wide text-icat-primary"
+                    >
+                      {initials}
+                    </span>
+                    <div className="flex flex-col">
+                      <b className="text-[15px] font-semibold leading-snug text-icat-text">
+                        {testimonial.name}
+                      </b>
+                      <span className="text-[13px] leading-snug text-icat-secondary">
+                        {testimonial.program}
+                      </span>
+                    </div>
+                  </footer>
+                </blockquote>
+              );
+            })}
           </div>
         </section>
 
@@ -522,10 +589,17 @@ export function HomePage() {
             copy="Media and design skills carry into nearly every sector. These are the ones ICAT's placement division recruits into year after year."
           />
           <div className="career-grid stagger-grid">
-            {CAREERS.map((career, idx) => (
-              <article key={career}>
-                <span className="icon-tile">{String(idx + 1).padStart(2, '0')}</span>
-                <h3>{career}</h3>
+            {CAREERS.map((career) => (
+              <article key={career.title}>
+                <span className="icon-tile">
+                  <img
+                    src={career.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-9 w-9 object-contain"
+                  />
+                </span>
+                <h3>{career.title}</h3>
               </article>
             ))}
           </div>
