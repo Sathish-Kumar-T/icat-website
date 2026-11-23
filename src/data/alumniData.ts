@@ -24,7 +24,7 @@ export const featuredAlumni: Alumni[] = [
     achievement: "VFX Supervisor and founder of Phantom FX",
     program: "PG Diploma in Visual Effects",
     years: "2004–2005",
-    image: "",
+    image: "Alumini-1-bejoy.jpg",
     source: "https://www.icat.ac.in/alumni-design-media.aspx"
   },
   {
@@ -33,7 +33,7 @@ export const featuredAlumni: Alumni[] = [
     company: "Weloadin",
     program: "Bachelor's Degree in Game Development",
     years: "2012–2015",
-    image: "",
+    image: "Alumni-2-Mario Royston.jpg",
     source: "https://www.icat.ac.in/alumni-design-media.aspx"
   },
   {
@@ -42,7 +42,7 @@ export const featuredAlumni: Alumni[] = [
     company: "Weloadin",
     program: "Bachelor's Degree in Game Design",
     years: "2012–2015",
-    image: "",
+    image: "Alumni-3-Dilip Arjun.jpeg",
     source: "https://www.icat.ac.in/alumni-design-media.aspx"
   },
   {
@@ -51,7 +51,7 @@ export const featuredAlumni: Alumni[] = [
     company: "Independent",
     program: "Bachelor's Degree in Photography",
     years: "2015–2018",
-    image: "",
+    image: "Alumini-1-bejoy.jpg",
     source: "https://www.icat.ac.in/alumni-design-media.aspx"
   }
 ];
