@@ -1,0 +1,27 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vfx-bottom" x1="10" y1="30" x2="46" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+    <linearGradient id="vfx-mid" x1="10" y1="20" x2="46" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#EAF1FF"/>
+      <stop offset="100%" stop-color="#E2E6ED"/>
+    </linearGradient>
+    <linearGradient id="vfx-top" x1="10" y1="10" x2="46" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3478F6"/>
+      <stop offset="55%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="28" cy="50.5" rx="16" ry="2.6" fill="#102B5C" fill-opacity="0.14"/>
+  <path d="M28 29L46 37.5L28 46L10 37.5L28 29Z" fill="url(#vfx-bottom)"/>
+  <path d="M28 20L46 28.5L28 37L10 28.5L28 20Z" fill="url(#vfx-mid)" stroke="#3478F6" stroke-width="1"/>
+  <path d="M28 11L46 19.5L28 28L10 19.5L28 11Z" fill="url(#vfx-top)"/>
+  <path d="M28 11L46 19.5L28 28L10 19.5L28 11Z" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1"/>
+  <circle cx="28" cy="19.5" r="2.6" fill="#FFFFFF"/>
+  <circle cx="28" cy="19.5" r="1.3" fill="#EB2030"/>
+  <circle cx="43.5" cy="19.5" r="1.2" fill="#EAF1FF"/>
+  <circle cx="12.5" cy="19.5" r="1.2" fill="#EAF1FF"/>
+</svg>

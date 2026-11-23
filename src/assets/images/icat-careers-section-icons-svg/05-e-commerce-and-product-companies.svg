@@ -1,0 +1,23 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tote-front" x1="12" y1="18" x2="44" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3478F6"/>
+      <stop offset="50%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+    <linearGradient id="tote-card" x1="18" y1="24" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EAF1FF"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="28" cy="50.5" rx="16" ry="2.6" fill="#102B5C" fill-opacity="0.14"/>
+  <path d="M21 20V16.5C21 12.6 24.1 9.5 28 9.5C31.9 9.5 35 12.6 35 16.5V20" stroke="#102B5C" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M13.5 20.5C13.5 19.1 14.6 18 16 18H40C41.4 18 42.5 19.1 42.5 20.5L44.5 43.5C44.7 45.4 43.2 47 41.3 47H14.7C12.8 47 11.3 45.4 11.5 43.5L13.5 20.5Z" fill="url(#tote-front)"/>
+  <path d="M14.5 19.5H41.5" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.2"/>
+  <circle cx="21" cy="21.5" r="1.6" fill="#EAF1FF"/>
+  <circle cx="35" cy="21.5" r="1.6" fill="#EAF1FF"/>
+  <rect x="18" y="26.5" width="20" height="14" rx="2.5" fill="url(#tote-card)"/>
+  <rect x="21" y="29.8" width="8" height="2" rx="1" fill="#1746A2"/>
+  <rect x="21" y="33.5" width="13" height="1.8" rx="0.9" fill="#E2E6ED"/>
+  <circle cx="34.2" cy="30.8" r="1.8" fill="#EB2030"/>
+</svg>
