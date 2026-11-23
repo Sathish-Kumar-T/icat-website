@@ -1,5 +1,5 @@
 import bejoyImage from "../assets/images/Alumini-1-bejoy.jpg";
-import marioImage from "../assets/Alumni-2-Mario Royston.jpg";
+import marioImage from "../assets/images/Alumni-2-Mario Royston.jpg";
 import dilipImage from "../assets/images/Alumni-3-Dilip Arjun.jpeg";
 import palaniappanImage from "../assets/images/Alumni-4-Vivek Desai.jpg"; 
 

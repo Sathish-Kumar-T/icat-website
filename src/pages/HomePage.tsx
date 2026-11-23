@@ -19,13 +19,17 @@ import {
   type QualificationId,
 } from '../data/programmes';
 import {
-  ALUMNI_MEDIA,
   EVENT_MEDIA,
   NEWS_MEDIA,
   PROGRAMME_MEDIA,
   SECTION_MEDIA,
   WORK_MEDIA,
 } from '../data/media';
+import {
+  alumniTestimonials,
+  featuredAlumni,
+  industryAlumni,
+} from '../data/alumniData';
 import chennaiCampusImg from '../assets/images/Chennai-campus.png';
 import bengaluruCampusImg from '../assets/images/Bengaluru-campus.png';
 import hyderabadCampusImg from '../assets/images/Hyderabad-campus.png';
@@ -80,12 +84,12 @@ const CAMPUSES_LIST = [
   },
 ];
 
-const ALUMNI: [string, string][] = [
-  ['Manoj Kumar', 'Senior Business Presentation Designer, McKinsey'],
-  ['Ganesh', 'Visualizing Associate, Amazon'],
-  ['Basheer', 'Senior Game Programmer, Gameshastra'],
-  ['Abinesh', 'Motion Graphic Designer, Divo'],
-];
+const ALUMNI_LIST = [...featuredAlumni, ...industryAlumni];
+const ALUMNI_PAGE_SIZE = 4;
+const ALUMNI_SLIDES = Array.from(
+  { length: Math.ceil(ALUMNI_LIST.length / ALUMNI_PAGE_SIZE) },
+  (_, idx) => ALUMNI_LIST.slice(idx * ALUMNI_PAGE_SIZE, (idx + 1) * ALUMNI_PAGE_SIZE)
+);
 
 const CAREERS = [
   'Animation and film studios',
@@ -443,21 +447,31 @@ export function HomePage() {
             copy="Alumni work on projects ranging from Hollywood and Indian blockbusters to new-age games, at studios, product companies and consultancies in India and overseas."
           />
           <div className="alumni-grid stagger-grid">
-            {ALUMNI.map(([name, role], idx) => (
-              <article key={name}>
-                <MediaPlaceholder
-                  portrait
-                  src={ALUMNI_MEDIA[idx]}
-                  alt={`${name}, ${role}`}
-                />
-                <h3>{name}</h3>
-                <p>{role}</p>
-              </article>
-            ))}
+            {ALUMNI_SLIDES[alumniSlide].map((alumnus) => {
+              const role = `${alumnus.designation}, ${alumnus.company}`;
+              return (
+                <article key={`${alumnus.name}-${alumnus.company}`}>
+                  <MediaPlaceholder
+                    portrait
+                    src={alumnus.image || undefined}
+                    alt={`${alumnus.name}, ${role}`}
+                  />
+                  <h3>{alumnus.name}</h3>
+                  <p>{role}</p>
+                  {alumnus.program && (
+                    <p>
+                      {alumnus.program}
+                      {alumnus.years ? ` (${alumnus.years})` : ''}
+                    </p>
+                  )}
+                  {alumnus.achievement && <p>{alumnus.achievement}</p>}
+                </article>
+              );
+            })}
           </div>
           <div className="slider-controls" aria-label="Alumni slider controls">
             <span>
-              {[0, 1, 2].map((idx) =>
+              {ALUMNI_SLIDES.map((_, idx) =>
                 alumniSlide === idx ? <b key={idx} /> : <i key={idx} />
               )}
             </span>
@@ -465,14 +479,16 @@ export function HomePage() {
               <button
                 type="button"
                 aria-label="Previous alumni"
-                onClick={() => setAlumniSlide((prev) => (prev + 2) % 3)}
+                onClick={() =>
+                  setAlumniSlide((prev) => (prev - 1 + ALUMNI_SLIDES.length) % ALUMNI_SLIDES.length)
+                }
               >
                 ←
               </button>
               <button
                 type="button"
                 aria-label="Next alumni"
-                onClick={() => setAlumniSlide((prev) => (prev + 1) % 3)}
+                onClick={() => setAlumniSlide((prev) => (prev + 1) % ALUMNI_SLIDES.length)}
               >
                 →
               </button>
@@ -485,6 +501,17 @@ export function HomePage() {
               design, fashion and interiors.
             </p>
             <ActionButton href="#alumni">Read alumni stories</ActionButton>
+          </div>
+          <div className="quotes mt-12 reveal">
+            {alumniTestimonials.map((testimonial) => (
+              <blockquote key={testimonial.name}>
+                <p>{testimonial.quote}</p>
+                <footer>
+                  <b>{testimonial.name}</b>
+                  <span>{testimonial.program}</span>
+                </footer>
+              </blockquote>
+            ))}
           </div>
         </section>
 
