@@ -1,7 +1,7 @@
 import bejoyImage from "../assets/images/Alumini-1-bejoy.jpg";
-import marioImage from "../assets/images/Alumini-2-mario.jpg";
-import dilipImage from "../assets/images/Alumini-3-dilip.jpg";
-import palaniappanImage from "../assets/images/Alumini-4-palaniappan.jpg"; 
+import marioImage from "../assets/Alumni-2-Mario Royston.jpg";
+import dilipImage from "../assets/images/Alumni-3-Dilip Arjun.jpeg";
+import palaniappanImage from "../assets/images/Alumni-4-Vivek Desai.jpg"; 
 
 export interface Alumni {
   name: string;
