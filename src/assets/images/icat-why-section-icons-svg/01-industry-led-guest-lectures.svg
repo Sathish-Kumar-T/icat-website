@@ -1,0 +1,31 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mic-body" x1="16" y1="8" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#EAF1FF"/>
+      <stop offset="100%" stop-color="#E2E6ED"/>
+    </linearGradient>
+    <linearGradient id="mic-grille" x1="20" y1="6" x2="38" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3478F6"/>
+      <stop offset="55%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+    <linearGradient id="mic-stand" x1="14" y1="36" x2="42" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="28" cy="51" rx="14" ry="2.6" fill="#102B5C" fill-opacity="0.14"/>
+  <g transform="rotate(-18 28 26)">
+    <rect x="21" y="6" width="14" height="20" rx="7" fill="url(#mic-grille)"/>
+    <path d="M22.5 11.5H33.5M21.8 15.5H34.2M22.5 19.5H33.5" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1.2" stroke-linecap="round"/>
+    <rect x="20" y="18" width="16" height="3.2" rx="1.6" fill="#102B5C"/>
+    <path d="M22 21H34L32.2 37C32 38.7 30.6 40 28.9 40H27.1C25.4 40 24 38.7 23.8 37L22 21Z" fill="url(#mic-body)" stroke="#E2E6ED" stroke-width="1"/>
+    <rect x="26.5" y="25" width="3" height="7" rx="1.5" fill="#1746A2"/>
+  </g>
+  <path d="M16 25C16 32.5 21.4 38 28 38C34.6 38 40 32.5 40 25" stroke="url(#mic-stand)" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="16" cy="25" r="2.2" fill="#EB2030"/>
+  <circle cx="40" cy="25" r="2.2" fill="#EB2030"/>
+  <path d="M28 38V47" stroke="#102B5C" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M19 48.5C19 46.8 23 45.5 28 45.5C33 45.5 37 46.8 37 48.5C37 49.6 33 50.2 28 50.2C23 50.2 19 49.6 19 48.5Z" fill="url(#mic-stand)"/>
+</svg>

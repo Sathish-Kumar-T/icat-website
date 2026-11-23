@@ -1,0 +1,26 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cap-top" x1="8" y1="12" x2="48" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3478F6"/>
+      <stop offset="50%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+    <linearGradient id="cap-base" x1="15" y1="26" x2="41" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#EAF1FF"/>
+      <stop offset="100%" stop-color="#E2E6ED"/>
+    </linearGradient>
+    <linearGradient id="cap-band" x1="15" y1="34" x2="41" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1746A2"/>
+      <stop offset="100%" stop-color="#102B5C"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="28" cy="50.5" rx="16" ry="2.6" fill="#102B5C" fill-opacity="0.14"/>
+  <path d="M16 25V36.5C16 39.8 21.4 42.5 28 42.5C34.6 42.5 40 39.8 40 36.5V25L28 30.5L16 25Z" fill="url(#cap-base)" stroke="#E2E6ED" stroke-width="1"/>
+  <path d="M16 34.5C16 37.8 21.4 40.5 28 40.5C34.6 40.5 40 37.8 40 34.5V37C40 40.3 34.6 43 28 43C21.4 43 16 40.3 16 37V34.5Z" fill="url(#cap-band)"/>
+  <path d="M28 11L49 20.5L28 30L7 20.5L28 11Z" fill="url(#cap-top)"/>
+  <path d="M7 20.5L28 30L49 20.5L49 22.3L28 31.8L7 22.3V20.5Z" fill="#102B5C"/>
+  <path d="M28 20.5L43 27.2V36.5" stroke="#EB2030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28" cy="20.5" r="2.2" fill="#FFFFFF"/>
+  <path d="M41.3 36.5H44.7L45.4 42.5H40.6L41.3 36.5Z" fill="#EB2030"/>
+</svg>
