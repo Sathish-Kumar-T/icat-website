@@ -1,0 +1,214 @@
+/* ICAT recruiter logo marquee */
+.icat-recruiters {
+  width: 100%;
+  padding: clamp(3.5rem, 6vw, 5.25rem) 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.icat-recruiters__intro {
+  max-width: 760px;
+  margin: 0 auto clamp(2rem, 4vw, 2.75rem);
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.icat-recruiters__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  color: #3478f6;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.icat-recruiters__intro h2 {
+  margin: 0;
+  color: #102b5c;
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+
+.icat-recruiters__intro p {
+  max-width: 620px;
+  margin: 1rem auto 0;
+  color: #626b7a;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.icat-recruiter-marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.icat-recruiter-marquee::before,
+.icat-recruiter-marquee::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  width: clamp(28px, 7vw, 100px);
+  content: "";
+  pointer-events: none;
+}
+
+.icat-recruiter-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 0%) 100%);
+}
+
+.icat-recruiter-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, #fff 0%, rgb(255 255 255 / 0%) 100%);
+}
+
+.icat-recruiter-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: icat-recruiter-scroll 48s linear infinite;
+  will-change: transform;
+}
+
+.icat-recruiter-marquee:hover .icat-recruiter-marquee__track,
+.icat-recruiter-marquee:focus-within .icat-recruiter-marquee__track {
+  animation-play-state: paused;
+}
+
+.icat-recruiter-marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(2.25rem, 4.5vw, 4.75rem);
+  padding: 0 clamp(1.125rem, 2.25vw, 2.375rem);
+}
+
+.icat-recruiter-logo {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 58px;
+  color: #26364e;
+  white-space: nowrap;
+  opacity: 0.82;
+  transition: opacity 180ms ease;
+}
+
+.icat-recruiter-logo:hover {
+  opacity: 1;
+}
+
+.icat-recruiter-logo__mark {
+  display: block;
+  width: auto;
+  max-width: 38px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.icat-recruiter-logo__mark[hidden] {
+  display: none;
+}
+
+.icat-recruiter-logo__name {
+  color: #26364e;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.icat-recruiters__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem 1.25rem;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+  color: #7a8492;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.icat-recruiters__footer a {
+  color: #1746a2;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.icat-recruiters__footer a:hover {
+  color: #3478f6;
+}
+
+@keyframes icat-recruiter-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .icat-recruiters {
+    padding: 3.25rem 0;
+  }
+
+  .icat-recruiters__intro {
+    padding: 0 1.25rem;
+  }
+
+  .icat-recruiters__intro p {
+    font-size: 0.88rem;
+  }
+
+  .icat-recruiter-marquee__group {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .icat-recruiter-logo {
+    min-height: 48px;
+    gap: 0.5rem;
+  }
+
+  .icat-recruiter-logo__mark {
+    max-width: 30px;
+    height: 24px;
+  }
+
+  .icat-recruiter-logo__name {
+    font-size: 0.9rem;
+  }
+
+  .icat-recruiters__footer {
+    flex-direction: column;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icat-recruiter-marquee {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .icat-recruiter-marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .icat-recruiter-marquee__track {
+    animation: none;
+  }
+
+  .icat-recruiter-marquee__group--duplicate {
+    display: none;
+  }
+}
