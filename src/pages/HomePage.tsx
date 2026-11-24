@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../components/Navbar';
 import CompanyMarquee from '../components/CompanyMarquee';
-import StudentSuccessStories from '../components/StudentSuccessStories';
+//import StudentSuccessStories from '../components/StudentSuccessStories';
 import { useLanguage } from '../context/LanguageContext';
 import {
   ActionButton,
@@ -417,7 +417,7 @@ export function HomePage() {
           <ActionButton href="#programmes">Browse all programmes</ActionButton>
         </section>
 
-        <StudentSuccessStories />
+        //<StudentSuccessStories />
 
         <section className="section container">
           <SectionHeading
