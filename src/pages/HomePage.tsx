@@ -3,6 +3,7 @@ import { Link, useLocation, useSearchParams } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../components/Navbar';
+import CompanyMarquee from '../components/CompanyMarquee';
 import { useLanguage } from '../context/LanguageContext';
 import {
   ActionButton,
@@ -372,6 +373,8 @@ export function HomePage() {
             ))}
           </div>
         </section>
+
+        <CompanyMarquee />
 
         <section className="section container" id="programmes">
           <SectionHeading
