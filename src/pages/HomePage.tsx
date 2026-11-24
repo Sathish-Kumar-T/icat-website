@@ -417,7 +417,7 @@ export function HomePage() {
           <ActionButton href="#programmes">Browse all programmes</ActionButton>
         </section>
 
-        //<StudentSuccessStories />
+        /* <StudentSuccessStories /> */
 
         <section className="section container">
           <SectionHeading
