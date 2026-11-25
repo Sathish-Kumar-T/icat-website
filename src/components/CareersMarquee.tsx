@@ -299,8 +299,8 @@ export const CareersMarquee: React.FC = () => {
     let lastTime = 0;
     let rafId = 0;
 
-    const AUTO_SPEED = 0.55; // px per frame (~33px/sec)
-    const FRICTION = 0.94;
+    const AUTO_SPEED = 1.25; // Faster glide (~75px/sec). Try 1.0 (medium) to 1.6 (fast)
+    const FRICTION = 0.97;   // Closer to 1.0 = less friction & longer, smoother coast
 
     const wrapOffset = () => {
       if (setWidth <= 0) return;
@@ -372,7 +372,7 @@ export const CareersMarquee: React.FC = () => {
 
       if (delta !== 0) {
         e.preventDefault();
-        offset -= delta * 0.85;
+        offset -= delta * 1.15;
         velocity = 0;
         wrapOffset();
       }
@@ -612,7 +612,7 @@ export const CareersMarquee: React.FC = () => {
         </div>
       </div>
 
-      <div className="icat-careers-divider" aria-hidden="true" />
+      {/*<div className="icat-careers-divider" aria-hidden="true" />*/}
     </section>
   );
 };
