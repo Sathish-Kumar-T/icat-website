@@ -408,7 +408,7 @@ export const CareersMarquee: React.FC = () => {
         </div>
       </div>
 
-      <div className="icat-careers-divider" aria-hidden="true" />
+      //<div className="icat-careers-divider" aria-hidden="true" />
     </section>
   );
 };
