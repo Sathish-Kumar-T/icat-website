@@ -65,7 +65,7 @@ export default function CompanyMarquee() {
         </div>
       </div>
 
-      <div className="icat-recruiters__footer">
+      {/*<div className="icat-recruiters__footer">
         <span>Selected companies from ICAT&apos;s published recruiter list</span>
         <a
           href="https://www.icat.ac.in/frequent-recruiters.aspx"
@@ -74,7 +74,7 @@ export default function CompanyMarquee() {
         >
           Explore all recruiters <span aria-hidden="true">↗</span>
         </a>
-      </div>
+      </div>*/}
     </section>
   );
 }
