@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../components/Navbar';
 import CompanyMarquee from '../components/CompanyMarquee';
 //import StudentSuccessStories from '../components/StudentSuccessStories';
+import CareersMarquee from '../components/CareersMarquee';
 import { useLanguage } from '../context/LanguageContext';
 import {
   ActionButton,
@@ -588,28 +589,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="section container">
-          <SectionHeading
-            eyebrow="Careers"
-            title="The industries ICAT graduates move into"
-            copy="Media and design skills carry into nearly every sector. These are the ones ICAT's placement division recruits into year after year."
-          />
-          <div className="career-grid stagger-grid">
-            {CAREERS.map((career) => (
-              <article key={career.title}>
-                <span className="icon-tile">
-                  <img
-                    src={career.icon}
-                    alt=""
-                    aria-hidden="true"
-                    className="h-9 w-9 object-contain"
-                  />
-                </span>
-                <h3>{career.title}</h3>
-              </article>
-            ))}
-          </div>
-        </section>
+        <CareersMarquee />
 
         <section className="section container" id="works">
           <SectionHeading
