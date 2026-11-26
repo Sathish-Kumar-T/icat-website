@@ -1,7 +1,7 @@
 /* =========================================================
    TopPlacements.css
-   Crew Connect–Inspired "Real success, real stories" Wall
-   Adapted to ICAT College of Design & Media Theme
+   Large Portrait Colored-Frame Placement Wall
+   Inspired by Crew Connect "Real success, real stories"
    ========================================================= */
 
 .icat-pwall-section {
@@ -13,7 +13,7 @@
 
   background: #FFFFFF;
   border-top: 1px solid var(--pwall-border);
-  padding: clamp(56px, 7.5vw, 88px) 0;
+  padding: clamp(56px, 7vw, 88px) 0;
   display: flex;
   flex-direction: column;
   gap: 36px;
@@ -28,7 +28,7 @@
   box-sizing: border-box;
 }
 
-/* Centered Editorial Header */
+/* Centered Header */
 .icat-pwall-header {
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@
 
 .icat-pwall-title {
   margin: 0;
-  font-size: clamp(32px, 4.4vw, 54px);
+  font-size: clamp(34px, 4.6vw, 58px);
   font-weight: 600;
   letter-spacing: -0.032em;
   line-height: 1.08;
@@ -71,7 +71,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 8px 0 12px;
+  padding: 10px 0 14px;
 }
 
 .icat-pwall::before,
@@ -97,11 +97,11 @@
 
 .icat-pwall__track {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: stretch;
+  gap: 18px;
   width: max-content;
   will-change: transform;
-  animation: icatPwallScroll 46s linear infinite;
+  animation: icatPwallScroll 50s linear infinite;
 }
 
 .icat-pwall:hover .icat-pwall__track {
@@ -117,35 +117,33 @@
   }
 }
 
-/* Student Placement Card */
+/* Large Solid-Colored Portrait Card Shell */
 .icat-pwall__card {
-  width: 224px;
+  width: 268px;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 8px 8px 18px;
+  border-radius: 22px;
+  background: var(--card-bg, #1746A2);
+  box-shadow: 0 8px 24px rgba(11, 31, 68, 0.09);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .icat-pwall__card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 36px rgba(11, 31, 68, 0.16);
 }
 
-/* Square Portrait Frame with Hue Tints */
+/* Tall Portrait Photo Frame Inside Colored Shell */
 .icat-pwall__frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 22px;
+  aspect-ratio: 4 / 4.35;
+  border-radius: 15px;
   overflow: hidden;
-  background: var(--hue-bg, #EAF1FF);
-  border: 1px solid var(--hue-border, rgba(23, 70, 162, 0.12));
-  box-shadow: 0 6px 20px rgba(11, 31, 68, 0.05);
-  transition: box-shadow 0.28s ease;
-}
-
-.icat-pwall__card:hover .icat-pwall__frame {
-  box-shadow: 0 16px 32px rgba(11, 31, 68, 0.12);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .icat-pwall__frame img {
@@ -161,7 +159,7 @@
   transform: scale(1.04);
 }
 
-/* Clean Editorial Fallback when Student Photo Is Not Uploaded Yet */
+/* Clean Placeholder Tile (Shown until student photo is uploaded) */
 .icat-pwall__fallback {
   width: 100%;
   height: 100%;
@@ -170,39 +168,35 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.65) 0%, transparent 65%),
-              var(--hue-bg, #EAF1FF);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.94) 0%, rgba(244, 247, 252, 0.9) 100%);
 }
 
 .icat-pwall__initials {
-  font-size: 42px;
+  font-size: 52px;
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: var(--hue-ink, #1746A2);
-  opacity: 0.85;
+  color: var(--card-bg, #1746A2);
   line-height: 1;
 }
 
-.icat-pwall__company-chip {
+.icat-pwall__photo-hint {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--hue-ink, #1746A2);
-  background: rgba(255, 255, 255, 0.72);
-  padding: 3px 10px;
-  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748B;
 }
 
-/* Floating CTC Package Pill (like .cc-pwall__days) */
+/* Dark Frosted CTC Package Pill (Bottom-Left of Photo) */
 .icat-pwall__package {
   position: absolute;
-  left: 12px;
-  bottom: 12px;
+  left: 10px;
+  bottom: 10px;
   display: inline-flex;
   align-items: center;
-  padding: 5px 11px;
+  padding: 5px 12px;
   border-radius: 999px;
-  background: rgba(11, 31, 68, 0.88);
+  background: rgba(15, 23, 42, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
@@ -210,68 +204,40 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
-  box-shadow: 0 4px 12px rgba(11, 31, 68, 0.22);
 }
 
-/* Student Name & Discipline Meta */
+/* Student Name & Discipline Inside Colored Footer */
 .icat-pwall__meta {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 0 4px;
+  padding: 14px 10px 0;
 }
 
 .icat-pwall__name {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.012em;
-  color: var(--pwall-ink);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
   line-height: 1.3;
 }
 
 .icat-pwall__sector {
   font-size: 13px;
   font-weight: 500;
-  color: var(--pwall-muted);
+  color: rgba(255, 255, 255, 0.88);
   line-height: 1.35;
 }
 
-/* 6-Hue Pastel Palette (matching Crew Connect data-hue rhythm) */
-.icat-pwall__card[data-hue="cobalt"] {
-  --hue-bg: #E8F0FE;
-  --hue-border: rgba(23, 70, 162, 0.14);
-  --hue-ink: #1746A2;
-}
-
-.icat-pwall__card[data-hue="violet"] {
-  --hue-bg: #EFEAFF;
-  --hue-border: rgba(109, 40, 217, 0.14);
-  --hue-ink: #5B21B6;
-}
-
-.icat-pwall__card[data-hue="teal"] {
-  --hue-bg: #E4F7F5;
-  --hue-border: rgba(15, 118, 110, 0.14);
-  --hue-ink: #0F766E;
-}
-
-.icat-pwall__card[data-hue="amber"] {
-  --hue-bg: #FEF3DC;
-  --hue-border: rgba(180, 83, 9, 0.14);
-  --hue-ink: #B45309;
-}
-
-.icat-pwall__card[data-hue="rose"] {
-  --hue-bg: #FDEAF0;
-  --hue-border: rgba(190, 18, 60, 0.14);
-  --hue-ink: #BE123C;
-}
-
-.icat-pwall__card[data-hue="lime"] {
-  --hue-bg: #ECF8E5;
-  --hue-border: rgba(63, 98, 18, 0.14);
-  --hue-ink: #3F6212;
-}
+/* Vibrant Solid Card Colors (Matching Screenshot Rhythm) */
+.icat-pwall__card[data-hue="rose"]   { --card-bg: #DE4377; }
+.icat-pwall__card[data-hue="lime"]   { --card-bg: #74AD18; }
+.icat-pwall__card[data-hue="forest"] { --card-bg: #3C7A2F; }
+.icat-pwall__card[data-hue="sage"]   { --card-bg: #6BA93A; }
+.icat-pwall__card[data-hue="teal"]   { --card-bg: #0093A8; }
+.icat-pwall__card[data-hue="amber"]  { --card-bg: #DC9325; }
+.icat-pwall__card[data-hue="cobalt"] { --card-bg: #1746A2; }
+.icat-pwall__card[data-hue="violet"] { --card-bg: #6D3EC6; }
 
 /* Footer Link */
 .icat-pwall-footer {
@@ -310,26 +276,24 @@
   }
   .icat-pwall__track {
     gap: 14px;
-    animation-duration: 36s;
+    animation-duration: 38s;
   }
   .icat-pwall__card {
-    width: 176px;
-    gap: 10px;
-  }
-  .icat-pwall__frame {
+    width: 218px;
+    padding: 7px 7px 14px;
     border-radius: 18px;
   }
-  .icat-pwall__initials {
-    font-size: 34px;
+  .icat-pwall__frame {
+    border-radius: 12px;
   }
-  .icat-pwall__package {
-    left: 10px;
-    bottom: 10px;
-    font-size: 11.5px;
-    padding: 4px 9px;
+  .icat-pwall__initials {
+    font-size: 42px;
+  }
+  .icat-pwall__meta {
+    padding: 11px 8px 0;
   }
   .icat-pwall__name {
-    font-size: 14px;
+    font-size: 14.5px;
   }
   .icat-pwall__sector {
     font-size: 12px;
