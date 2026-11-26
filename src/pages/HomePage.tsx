@@ -6,6 +6,7 @@ import { Navbar } from '../components/Navbar';
 import { ProgrammeCards } from '../components/ProgrammeCards';
 import CompanyMarquee from '../components/CompanyMarquee';
 //import StudentSuccessStories from '../components/StudentSuccessStories';
+import { TopPlacements } from '../components/TopPlacements';
 import CareersMarquee from '../components/CareersMarquee';
 import { useLanguage } from '../context/LanguageContext';
 import {
@@ -397,7 +398,11 @@ export function HomePage() {
             />
           </div>
         </section>
+        
+        
+       <TopPlacements />
 
+        
         {/*<section className="section container">
           <SectionHeading
             eyebrow="Why ICAT"
@@ -421,10 +426,11 @@ export function HomePage() {
             ))}
           </div>
         </section>*/}
+        
 
         <CompanyMarquee />
 
-      
+    
 
         {/* <StudentSuccessStories /> */}
 
