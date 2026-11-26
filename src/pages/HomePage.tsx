@@ -3,6 +3,7 @@ import { Link, useLocation, useSearchParams } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navbar } from '../components/Navbar';
+import { ProgrammeCards } from '../components/ProgrammeCards';
 import CompanyMarquee from '../components/CompanyMarquee';
 //import StudentSuccessStories from '../components/StudentSuccessStories';
 import CareersMarquee from '../components/CareersMarquee';
@@ -402,7 +403,10 @@ export function HomePage() {
               </button>
             ))}
           </div>
-          <div className="card-grid stagger-grid programmes-card-grid">
+          
+          <ProgrammeCards programmes={programmes} level={level} mediaMap={PROGRAMME_MEDIA} />
+          
+          {/*<div className="card-grid stagger-grid programmes-card-grid">
             {programmes.map((prog) => (
               <article className="media-card" key={prog.slug}>
                 <MediaPlaceholder
@@ -414,7 +418,7 @@ export function HomePage() {
                 <Link to={`/programs/${prog.slug}?level=${level}`}>Explore</Link>
               </article>
             ))}
-          </div>
+          </div>*/}
           <ActionButton href="#programmes">Browse all programmes</ActionButton>
         </section>
 
