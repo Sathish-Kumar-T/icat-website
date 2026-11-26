@@ -332,6 +332,50 @@ export function HomePage() {
           ))}
         </section>
 
+          <section className="section container" id="programmes">
+          <SectionHeading
+            eyebrow="Programmes"
+            title="Twelve disciplines. Three levels. Three campuses."
+            copy="Bachelor's, PG Professional and Master's programmes across animation, VFX, games, design and media, offered in Chennai, Bengaluru and Hyderabad. Levels vary by campus, and each programme page lists exactly what runs where."
+          />
+          <div
+            className="qualification-tabs reveal"
+            role="tablist"
+            aria-label="Programme qualification"
+          >
+            {QUALIFICATIONS.map((qual) => (
+              <button
+                key={qual.id}
+                role="tab"
+                type="button"
+                aria-selected={level === qual.id}
+                className={level === qual.id ? 'active' : ''}
+                onClick={() => selectLevel(qual.id)}
+              >
+                {qual.label}
+              </button>
+            ))}
+          </div>
+          
+          <ProgrammeCards programmes={programmes} level={level} mediaMap={PROGRAMME_MEDIA} />
+          
+          {/*<div className="card-grid stagger-grid programmes-card-grid">
+            {programmes.map((prog) => (
+              <article className="media-card" key={prog.slug}>
+                <MediaPlaceholder
+                  src={PROGRAMME_MEDIA[prog.slug]}
+                  alt={`${prog.title} creative portfolio artwork`}
+                />
+                <h3>{prog.title}</h3>
+                <p>{prog.description}</p>
+                <Link to={`/programs/${prog.slug}?level=${level}`}>Explore</Link>
+              </article>
+            ))}
+          </div>*/}
+          <ActionButton href="#programmes">Browse all programmes</ActionButton>
+        </section>  
+
+        
         <section className="split-section container" id="about">
           <div className="reveal">
             <span className="eyebrow">The ICAT legacy</span>
@@ -379,48 +423,7 @@ export function HomePage() {
 
         <CompanyMarquee />
 
-        <section className="section container" id="programmes">
-          <SectionHeading
-            eyebrow="Programmes"
-            title="Twelve disciplines. Three levels. Three campuses."
-            copy="Bachelor's, PG Professional and Master's programmes across animation, VFX, games, design and media, offered in Chennai, Bengaluru and Hyderabad. Levels vary by campus, and each programme page lists exactly what runs where."
-          />
-          <div
-            className="qualification-tabs reveal"
-            role="tablist"
-            aria-label="Programme qualification"
-          >
-            {QUALIFICATIONS.map((qual) => (
-              <button
-                key={qual.id}
-                role="tab"
-                type="button"
-                aria-selected={level === qual.id}
-                className={level === qual.id ? 'active' : ''}
-                onClick={() => selectLevel(qual.id)}
-              >
-                {qual.label}
-              </button>
-            ))}
-          </div>
-          
-          <ProgrammeCards programmes={programmes} level={level} mediaMap={PROGRAMME_MEDIA} />
-          
-          {/*<div className="card-grid stagger-grid programmes-card-grid">
-            {programmes.map((prog) => (
-              <article className="media-card" key={prog.slug}>
-                <MediaPlaceholder
-                  src={PROGRAMME_MEDIA[prog.slug]}
-                  alt={`${prog.title} creative portfolio artwork`}
-                />
-                <h3>{prog.title}</h3>
-                <p>{prog.description}</p>
-                <Link to={`/programs/${prog.slug}?level=${level}`}>Explore</Link>
-              </article>
-            ))}
-          </div>*/}
-          <ActionButton href="#programmes">Browse all programmes</ActionButton>
-        </section>
+      
 
         {/* <StudentSuccessStories /> */}
 
