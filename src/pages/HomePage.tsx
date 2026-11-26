@@ -398,7 +398,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="section container">
+        {/*<section className="section container">
           <SectionHeading
             eyebrow="Why ICAT"
             title="Trained the way studios hire"
@@ -420,7 +420,7 @@ export function HomePage() {
               </article>
             ))}
           </div>
-        </section>
+        </section>*/}
 
         <CompanyMarquee />
 
