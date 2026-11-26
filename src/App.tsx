@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
+import { BackToTop } from './components/BackToTop';
 import { LanguageProvider } from './context/LanguageContext';
 import { HomePage } from './pages/HomePage';
 import {
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <RouterProvider router={router} />
+      <BackToTop />
     </LanguageProvider>
   );
 }
